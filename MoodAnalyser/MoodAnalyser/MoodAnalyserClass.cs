@@ -10,10 +10,10 @@ namespace MoodAnalyser
     {
         public string Analyse(string Mood)
         {
-            if (Mood.Contains("sad"))
-                return "Sad Mood";
+            if (Mood.Contains("Sad"))
+                return "Sad";
             else
-                return "Happy Mood";
+                return "Happy";
         }
     }
 }
