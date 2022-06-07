@@ -8,7 +8,8 @@ namespace MoodAnalyser
 {
     public class MoodAnalyserClass
     {
-        string input;
+        public MoodAnalyserClass() { }
+        public string input;
         public MoodAnalyserClass(string input)
         {
             this.input = input;
