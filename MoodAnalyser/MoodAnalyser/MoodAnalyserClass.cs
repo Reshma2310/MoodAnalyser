@@ -15,10 +15,17 @@ namespace MoodAnalyser
         }
         public string Analyse()
         {
-            if (this.input.Contains("Sad"))
-                return "Sad";
-            else
+            try
+            {
+                if (this.input.Contains("Sad"))
+                    return "Sad";
+                else
+                    return "Happy";
+            }
+            catch (NullReferenceException)
+            {
                 return "Happy";
+            }
         }
     }
 }

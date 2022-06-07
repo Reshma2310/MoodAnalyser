@@ -1,4 +1,4 @@
-namespace MoodAnalyserTest
+namespace MoodAnalyserTests
 {
     public class Tests
     {
@@ -7,14 +7,21 @@ namespace MoodAnalyserTest
         {
             MoodAnalyser.MoodAnalyserClass analyse = new MoodAnalyser.MoodAnalyserClass("I'm in Sad mood");
             string actualResult = analyse.Analyse();
-            Assert.Pass("Sad", actualResult);
+            Assert.AreEqual("Sad", actualResult);
         }
         [Test]
         public void GivenStringInput_AnalyseMood_ReturnHappy()
         {
             MoodAnalyser.MoodAnalyserClass analyse = new MoodAnalyser.MoodAnalyserClass("I'm in Happy mood");
             string actualResult = analyse.Analyse();
-            Assert.Pass("Happy", actualResult);
+            Assert.AreEqual("Happy", actualResult);
+        }
+        [Test]
+        public void GivenInputNull_AnalyseMood_ReturnHappy()
+        {
+            MoodAnalyser.MoodAnalyserClass analyse = new MoodAnalyser.MoodAnalyserClass(null);
+            string actualResult = analyse.Analyse();
+            Assert.AreEqual("Happy", actualResult);
         }
     }
 }
