@@ -4,7 +4,7 @@ namespace MoodAnalyserTests
 {
     public class Tests
     {
-        [Test]
+        /*[Test]
         public void GivenStringMood_AnalyseMood_ReturnSadMood()
         {
             MoodAnalyser.MoodAnalyserClass analyse = new MoodAnalyser.MoodAnalyserClass("I'm in Sad mood");
@@ -45,15 +45,7 @@ namespace MoodAnalyserTests
             {
                 Assert.AreEqual("Mood can not be Empty", exc.Message);
             }
-        }
-        /*[Test]
-        public void GivenMoodAnalyseClassName_ShouldreturnObject()
-        {
-            string message = null;
-            object expected = new MoodAnalyserClass(message);
-            object actual = MoodAnalyserFactory.MoodAnalyserObject("MoodAnalyser.MoodAnalyserClass", "MoodAnalyserClass");
-            expected.Equals(actual);            
-        }*/
+        }        
         [Test]
         public void GivenMoodAnalyseClassName_ShouldreturnClassNotFound()
         {
@@ -118,6 +110,28 @@ namespace MoodAnalyserTests
             {
                 Assert.AreEqual("Constructor is not found", exec.Message);
             }
+        }*/
+        [Test]
+        public void GivenHappyIsInput_ShouldReturnHappy_UsinReflection()
+        {
+            object expected = "Happy";
+            object actual = MoodAnalyser.MoodAnalyserFactory.InvokeMoodAnalyser("Happy", "Analyse");
+            Assert.AreEqual(expected, actual);
+        }
+        [Test]
+        public void GivenImproperMethodName_NoSuchMethodException_UsingReflector()
+        {
+            try
+            {
+                object expected = "Happy";
+                object actual = MoodAnalyser.MoodAnalyserFactory.InvokeMoodAnalyser("Happy", "Analyse");
+                expected.Equals(actual);
+            }
+            catch (MoodAnalyser.MoodAnalyserException exck)
+            {
+                Assert.AreEqual("Constructor is not found", exck.Message);
+            }
+
         }
     }
 }
