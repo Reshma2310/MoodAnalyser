@@ -4,7 +4,7 @@ namespace MoodAnalyserTests
 {
     public class Tests
     {
-        /*[Test]
+        [Test]
         public void GivenStringMood_AnalyseMood_ReturnSadMood()
         {
             MoodAnalyser.MoodAnalyserClass analyse = new MoodAnalyser.MoodAnalyserClass("I'm in Sad mood");
@@ -137,7 +137,7 @@ namespace MoodAnalyserTests
         {
             object result = MoodAnalyser.MoodAnalyserFactory.SetField("Happy", "input");
             Assert.AreEqual("Happy", result);
-        }*/
+        }
         [Test]
         public void GivenHappyMood_Analyse_ReturnFieldNotFound()
         {
