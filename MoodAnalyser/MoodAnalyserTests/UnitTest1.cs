@@ -4,7 +4,7 @@ namespace MoodAnalyserTests
 {
     public class Tests
     {
-        [Test]
+        /*[Test]
         public void GivenStringMood_AnalyseMood_ReturnSadMood()
         {
             MoodAnalyser.MoodAnalyserClass analyse = new MoodAnalyser.MoodAnalyserClass("I'm in Sad mood");
@@ -137,6 +137,32 @@ namespace MoodAnalyserTests
         {
             object result = MoodAnalyser.MoodAnalyserFactory.SetField("Happy", "input");
             Assert.AreEqual("Happy", result);
+        }*/
+        [Test]
+        public void GivenHappyMood_Analyse_ReturnFieldNotFound()
+        {
+            try
+            {
+                object result = MoodAnalyser.MoodAnalyserFactory.SetField("Happy", "input");
+                Assert.AreEqual("Happy", result);
+            }
+            catch (Exception exe)
+            {
+                Assert.AreEqual("Field Not Found", exe.Message);
+            }
+        }
+        [Test]
+        public void GivenNullMood_AnalyseProcess_ReturnNullException()
+        {
+            try
+            {
+                object result = MoodAnalyser.MoodAnalyserFactory.SetField("Happy", "input");
+                Assert.AreEqual("Happy", result);
+            }
+            catch (Exception exp)
+            {
+                Assert.AreEqual("Mood Should not be null", exp.Message);
+            }
         }
     }
 }
