@@ -17,7 +17,7 @@ namespace MoodAnalyserTests
             MoodAnalyser.MoodAnalyserClass analyse = new MoodAnalyser.MoodAnalyserClass("I'm in Happy mood");
             string actualResult = analyse.Analyse();
             Assert.AreEqual("Happy", actualResult);
-        } 
+        }
         [Test]
         public void GivenInputNull_AnalyseMoodAndHandleNullException_ReturnNullMood()
         {
@@ -90,6 +90,6 @@ namespace MoodAnalyserTests
             object expected = new MoodAnalyserClass("Happy");
             object value = MoodAnalyserFactory.MoodAnalyzerParameter("MoodAnalyser.MoodAnalyserClass", "MoodAnalyserClass", "Happy");
             expected.Equals(value);
-        }
+        }        
     }
 }
