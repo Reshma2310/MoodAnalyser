@@ -92,7 +92,7 @@ namespace MoodAnalyserTests
             expected.Equals(value);
         }
         [Test]
-        public void GivenInvalidClassNameAndValidPerameterizedConstructor_ReturnClassNotFound()
+        public void GivenInvalidClassName_ValidateTheProcess_ReturnClassNotFound()
         {
             try
             {
@@ -103,6 +103,20 @@ namespace MoodAnalyserTests
             catch (Exception exep)
             {
                 Assert.AreEqual("Class not found", exep.Message);
+            }
+        }
+        [Test]
+        public void GivenInvalidConstructorName_AnalysisOfProcess_ReturnConstructorNotFound()
+        {
+            try
+            {
+                object expected = new MoodAnalyserClass("Happy");
+                object actual = MoodAnalyser.MoodAnalyserFactory.MoodAnalyzerParameter("MoodAnalyser.MoodAnalyserClass", "MoodAnalysers", "Happy");
+                expected.Equals(actual);
+            }
+            catch (Exception exec)
+            {
+                Assert.AreEqual("Constructor is not found", exec.Message);
             }
         }
     }
