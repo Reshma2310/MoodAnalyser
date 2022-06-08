@@ -67,7 +67,25 @@ namespace MoodAnalyser
             {
                 throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NO_SUCH_METHOD, "Method is Not Found");
             }
-
         }
+        public static object SetField(string mood, string fieldName)
+        {
+            try
+            {
+                MoodAnalyserClass moodAnalyser = new MoodAnalyserClass();
+                Type type = typeof(MoodAnalyserClass);
+                FieldInfo field = type.GetField(fieldName, BindingFlags.Public | BindingFlags.Instance);
+                if (mood == null)
+                {
+                    throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NULL_MESSAGE, "Mood Should not be null");
+                }
+                field.SetValue(moodAnalyser, mood);
+                return moodAnalyser.input;
+            }
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NO_SUCH_FIELD, "Field Not Found");
+            }
+        }        
     }
 }

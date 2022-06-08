@@ -4,7 +4,7 @@ namespace MoodAnalyserTests
 {
     public class Tests
     {
-        /*[Test]
+        [Test]
         public void GivenStringMood_AnalyseMood_ReturnSadMood()
         {
             MoodAnalyser.MoodAnalyserClass analyse = new MoodAnalyser.MoodAnalyserClass("I'm in Sad mood");
@@ -110,7 +110,7 @@ namespace MoodAnalyserTests
             {
                 Assert.AreEqual("Constructor is not found", exec.Message);
             }
-        }*/
+        }
         [Test]
         public void GivenHappyIsInput_ShouldReturnHappy_UsinReflection()
         {
@@ -131,7 +131,12 @@ namespace MoodAnalyserTests
             {
                 Assert.AreEqual("Constructor is not found", exck.Message);
             }
-
+        }
+        [Test]
+        public void GivenHappyMood_DynamicRefactor_ReturnHappy()
+        {
+            object result = MoodAnalyser.MoodAnalyserFactory.SetField("Happy", "input");
+            Assert.AreEqual("Happy", result);
         }
     }
 }
