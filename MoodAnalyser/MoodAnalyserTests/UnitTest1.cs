@@ -84,5 +84,12 @@ namespace MoodAnalyserTests
                 Assert.AreEqual("Constructor is not found", exp.Message);
             }
         }
+        [Test]
+        public void GivenMoodParameter_MoodParameterConstructor_ReturnParameterConstructor()
+        {
+            object expected = new MoodAnalyserClass("Happy");
+            object value = MoodAnalyserFactory.MoodAnalyzerParameter("MoodAnalyser.MoodAnalyserClass", "MoodAnalyserClass", "Happy");
+            expected.Equals(value);
+        }
     }
 }
