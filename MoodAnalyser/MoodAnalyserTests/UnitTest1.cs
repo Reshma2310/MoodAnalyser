@@ -3,7 +3,7 @@ using MoodAnalyser;
 namespace MoodAnalyserTests
 {
     public class Tests
-    {        
+    {
         [Test]
         public void GivenStringMood_AnalyseMood_ReturnSadMood()
         {
@@ -46,13 +46,43 @@ namespace MoodAnalyserTests
                 Assert.AreEqual("Mood can not be Empty", exc.Message);
             }
         }
-        [Test]
+        /*[Test]
         public void GivenMoodAnalyseClassName_ShouldreturnObject()
         {
             string message = null;
             object expected = new MoodAnalyserClass(message);
             object actual = MoodAnalyserFactory.MoodAnalyserObject("MoodAnalyser.MoodAnalyserClass", "MoodAnalyserClass");
             expected.Equals(actual);            
-        }        
+        }*/
+        [Test]
+        public void GivenMoodAnalyseClassName_ShouldreturnClassNotFound()
+        {
+            try
+            {
+                string message = null;
+                object expected = new MoodAnalyserClass(message);
+                object actual = MoodAnalyserFactory.MoodAnalyserObject("MoodAnalyser.MoodAnalyserCla", "MoodAnalyser.MoodAnalyserClass");
+                expected.Equals(actual);
+            }
+            catch (MoodAnalyser.MoodAnalyserException ex)
+            {
+                Assert.AreEqual("Class not found", ex.Message);
+            }
+        }
+        [Test]
+        public void GivenMoodAnalyseClassName_ShouldreturnConstructorNotFound()
+        {
+            try
+            {
+                string message = null;
+                object expected = new MoodAnalyserClass(message);
+                object actual = MoodAnalyserFactory.MoodAnalyserObject("MoodAnalyser.MoodAnalyserClass", "MoodAnalyserss");
+                expected.Equals(actual);
+            }
+            catch (MoodAnalyser.MoodAnalyserException exp)
+            {
+                Assert.AreEqual("Constructor is not found", exp.Message);
+            }
+        }
     }
 }

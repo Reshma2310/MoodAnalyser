@@ -13,7 +13,7 @@ namespace MoodAnalyser
         public static object MoodAnalyserObject(string ClassName, string ConstructorName)
         {
             string pattern = @"." + ConstructorName + "$";
-            Match result = Regex.Match(ClassName, pattern);
+            Match result = Regex.Match(pattern, ClassName);
             if (result.Success)
             {
                 try
@@ -22,7 +22,7 @@ namespace MoodAnalyser
                     Type moodAnalyseType = executing.GetType(ClassName);
                     return Activator.CreateInstance(moodAnalyseType);
                 }
-                catch (ArgumentNullException)
+                catch
                 {
                     throw new MoodAnalyserException(MoodAnalyserException.ExceptionType.NO_SUCH_CLASS, "Class not found");
                 }
